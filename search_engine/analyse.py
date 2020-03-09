@@ -1,8 +1,15 @@
 import pandas as pd
 
-data = pd.read_csv("data/test.csv", sep=";")
+data = pd.read_excel("Raw_Data/basketball.xlsx")
 
-print("Shape of data: " + str(data.shape))
+count = 0
+for row in data['TweetText']:
+    words = row.split(' ')
+    for i in words:
+        if("http" in i):
+            words.remove(i)
+    count = count + len(words)
 
-print(data.columns)
+print(count)
 
+print(type(data['Date(SGT - 9)'][2]))
