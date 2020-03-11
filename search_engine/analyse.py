@@ -12,4 +12,4 @@ for row in data['TweetText']:
 
 print(count)
 
-print(type(data['Date(SGT - 9)'][2]))
+print(data['TweetText'][2:12])
