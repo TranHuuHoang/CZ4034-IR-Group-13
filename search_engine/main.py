@@ -31,7 +31,7 @@ def run():
     print("{}: Index basketball_data into elasticsearch".format(TAG))
     Basketball.index_data_in_elasticsearch(basketball, elasticsearch_connection)
 
-    term = str(input("Enter a query: "))
+    term = str(input("{}: Enter a query: ".format(TAG)))
 
     while (term != 'end'):
         print("{}: Find suitable tweet for the query".format(TAG))
@@ -39,7 +39,7 @@ def run():
 
         print("{}: Results:".format(TAG))
         print(recommendation)
-        term = str(input("Enter another query: "))
+        term = str(input("{}: Enter another query: ".format(TAG)))
 
 
 def get_elasticsearch_connection():

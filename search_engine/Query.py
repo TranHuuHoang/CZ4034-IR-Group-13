@@ -112,8 +112,7 @@ def get_search_body(term):
     bool_body['should'] = {}
     bool_body['should']['match'] = {}
     bool_body['should']['match']["TweetText"] = {
-                "query": term,
-                "boost": 0.5
+                "query": term
             }
 
     return body
