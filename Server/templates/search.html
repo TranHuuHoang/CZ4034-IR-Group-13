@@ -10,28 +10,22 @@
 
 	<body>
 		<div class="container-fluid" style = "padding-top : 25px">
-			<div class = "col-lg-8 col-lg-offset-2">
-				<ul class="nav nav-pills nav-justified">
-				  <li role="presentation" class="active"><a href="#">Home</a></li>
-				  <li role="presentation"><a href="#">Profile</a></li>
-				  <li role="presentation"><a href="#">Messages</a></li>
-				</ul>
-			</div>
+			<ul class="nav nav-pills nav-justified">
+				<li role="presentation" class="active"><a href="#">Home</a></li>
+				<li role="presentation"><a href="#">Profile</a></li>
+				<li role="presentation"><a href="#">Messages</a></li>
+			</ul>
 		</div>
 
-	    <div class="container" style="padding : 25px">
+	    <div class="container center" style="padding : 25px; width : 70%">
 	    	<h1 class="text-center">Basketball Tweets Search Engine</h1>
-	        <div class="row">
-	            <div class="col-lg-4 col-lg-offset-4">
-	                <div class="input-group">
-	                    <input type="text" class="form-control" placeholder="Search...">
-	                    <span class="input-group-btn">
-	                        <button type="button" class="btn btn-primary">
-	                            <span class="glyphicon glyphicon-search"></span>
-	                        </button>
-	                    </span>
-	                </div>
-	            </div>
+	        <div class="row" style="margin-top: 25px">
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" placeholder="Search...">
+					<div class="input-group-append">
+						<button class="btn btn-primary" type="button">Search</button>
+					</div>
+				</div>
 	        </div>
 	    </div>
 
@@ -39,8 +33,6 @@
 	        <ul class="list-group">
 	            <li class="list-group-item">
 	                <div class="row">
-	                    <div class="col-xs-2 col-md-1">
-	                        <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
 	                    <div class="col-xs-10 col-md-11">
 	                        <div>
 	                            <div class="mic-info">
@@ -49,7 +41,7 @@
 	                            </div>
 	                        </div>
 	                        <p style="font-size : 1.5em">
-	                            Awesome designdfsafda
+	                            Awesome design
 	                        </p>
 	                    </div>
 	                </div>
@@ -60,29 +52,27 @@
 		<script src="static/js/jquery-3.4.1.min.js"></script>
 		<script src="static/js/bootstrap.min.js"></script>
         <script>$('.btn-primary').click(function(){
-                                                    $.ajax({
-                                                        type : 'GET',
-                                                        url : '/ajax',
-                                                        data : {query : $('input').val()},
-                                                        success : (dataSet) => populateList(JSON.parse(dataSet))
-                                                    })
-                                                   })
+											$.ajax({
+												type : 'GET',
+												url : '/ajax',
+												data : {'query': $('input').val()},
+												success : (dataSet) => populateList(dataSet)
+											})
+										})
         		var listItemGenerator = function(key, data) {
         			console.log(data);
         			htmlContent = `
 		        		<li class="list-group-item">
 			                <div class="row">
-			                    <div class="col-xs-2 col-md-1">
-			                        <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
 			                    <div class="col-xs-10 col-md-11">
 			                        <div>
 			                            <div class="mic-info">
-			                                <a href="#" style="font-size : 1.15em">${data.userHandle}</a>&nbsp | &nbsp
-			                                <span style="font-size : 1.15em">${data.date}</span>
+			                                <a href="#" style="font-size : 1.15em">${data.UserHandle}</a>&nbsp | &nbsp
+			                                <span style="font-size : 1.15em">${data.Date}</span>
 			                            </div>
 			                        </div>
 			                        <p style="font-size : 1.5em">
-			                            ${data.content}
+			                            ${data.TweetText}
 			                        </p>
 			                    </div>
 			                </div>
