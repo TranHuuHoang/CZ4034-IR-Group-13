@@ -138,15 +138,8 @@ def extract_result(result):
     for tweet in result:
         segment_result = []
 
-        # tweet_id = tweet['_id']
-        # tweet_score = float(tweet['_score'])
-
-        # segment_result.append(tweet_id)
-        # segment_result.append(tweet_score)
-
         tweet_source = tweet['_source']
-
-        # segment_result.append(tweet_source)
+        tweet_source['Date'] = tweet_source['Date'].replace('T', ' ')
 
         extracted_result.append(tweet_source)
 

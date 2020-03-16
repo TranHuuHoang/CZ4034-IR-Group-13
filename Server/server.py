@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, jsonify, request, send_from_directory
+from flask import Flask, render_template, url_for, jsonify, request
 import requests
 
 import Query

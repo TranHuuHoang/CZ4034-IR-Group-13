@@ -1,5 +1,8 @@
 import pandas as pd
 
+
+pd.set_option('display.max_colwidth', -1)
+
 data = pd.read_excel("Raw_Data/basketball.xlsx")
 
 count = 0
@@ -12,4 +15,5 @@ for row in data['TweetText']:
 
 print(count)
 
-print(data['TweetText'][2:12])
+
+print(type(data['Date(SGT - 9)'][1]))

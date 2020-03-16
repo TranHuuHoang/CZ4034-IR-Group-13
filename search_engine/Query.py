@@ -43,7 +43,7 @@ def query(term, elasticsearch_connection):
 
         extracted_result = extract_result(result)
 
-        recommendation[id] = extracted_result
+        recommendation = extracted_result
 
     except Exception as e:
         print("{}: {}".format(TAG, e))
@@ -138,12 +138,16 @@ def extract_result(result):
     for tweet in result:
         segment_result = []
 
-        tweet_id = tweet['_id']
-        tweet_score = float(tweet['_score'])
+        # tweet_id = tweet['_id']
+        # tweet_score = float(tweet['_score'])
 
-        segment_result.append(tweet_id)
-        segment_result.append(tweet_score)
+        # segment_result.append(tweet_id)
+        # segment_result.append(tweet_score)
 
-        extracted_result.append(segment_result)
+        tweet_source = tweet['_source']
+
+        # segment_result.append(tweet_source)
+
+        extracted_result.append(tweet_source)
 
     return extracted_result
