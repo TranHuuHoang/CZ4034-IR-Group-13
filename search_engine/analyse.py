@@ -3,7 +3,7 @@ import numpy as np
 
 pd.set_option('display.max_colwidth', -1)
 
-data = pd.read_excel("Raw_Data/basketball.xlsx")
+data = pd.read_excel("../Raw_Data/basketball.xlsx")
 
 count = 0
 
