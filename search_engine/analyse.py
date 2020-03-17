@@ -1,11 +1,14 @@
 import pandas as pd
-
+import numpy as np
 
 pd.set_option('display.max_colwidth', -1)
 
 data = pd.read_excel("Raw_Data/basketball.xlsx")
 
 count = 0
+
+print(len(data["TweetID"]))
+
 for row in data['TweetText']:
     words = row.split(' ')
     for i in words:
@@ -15,5 +18,4 @@ for row in data['TweetText']:
 
 print(count)
 
-
-print(type(data['Date(SGT - 9)'][1]))
+# print(data["TweetText"][2:12])
