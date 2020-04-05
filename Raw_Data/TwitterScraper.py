@@ -19,6 +19,6 @@ def scrape(query, count):
 
 
 ##df = scrape("soccer", 2500)
-##df.to_excel("output.xlsx", index = False)
+##df.to_excel("healthcare.xlsx", index = False)
 
 

@@ -1,6 +1,6 @@
 from elasticsearch import Elasticsearch
 
-import Basketball
+import Health
 import Query
 import os
 import sys
@@ -11,7 +11,7 @@ import requests
 TAG = "[{}]".format(os.path.basename(__file__))
 
 # Variable Definition
-basketball_data = "../Raw_Data/basketball.xlsx"
+health_data = "../Classification - Naive Bayes and SVM/healthcareoutput.xlsx"
 
 INITIAL_RETRIES = 0
 MAX_RETRIES = 3
@@ -25,21 +25,11 @@ def run():
     print("{}: Get Elasticsearch connection".format(TAG))
     elasticsearch_connection = get_elasticsearch_connection()
 
-    print("{}: Get Basketball Dataframe".format(TAG))
-    basketball = Basketball.get_data(basketball_data)
+    print("{}: Get Health Dataframe".format(TAG))
+    health = Health.get_data(health_data)
 
-    print("{}: Index basketball_data into elasticsearch".format(TAG))
-    Basketball.index_data_in_elasticsearch(basketball, elasticsearch_connection)
-
-    term = str(input("{}: Enter a query: ".format(TAG)))
-
-    while (term != 'end'):
-        print("{}: Find suitable tweet for the query".format(TAG))
-        recommendation = Query.query(term, elasticsearch_connection)
-
-        print("{}: Results:".format(TAG))
-        print(recommendation)
-        term = str(input("{}: Enter another query: ".format(TAG)))
+    print("{}: Index health_data into elasticsearch".format(TAG))
+    Health.index_data_in_elasticsearch(health, elasticsearch_connection)
 
 
 def get_elasticsearch_connection():

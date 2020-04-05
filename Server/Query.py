@@ -7,8 +7,8 @@ TAG = "[{}]".format(os.path.basename(__file__))
 
 # Variable Definition
 MISSING_VALUE = "-1"
-QUERY_RETURN_SIZE = 5
-INDEX_NAME = "basketball"
+QUERY_RETURN_SIZE = 10
+INDEX_NAME = "health"
 
 
 def query(term, elasticsearch_connection):
@@ -139,8 +139,12 @@ def extract_result(result):
         segment_result = []
 
         tweet_source = tweet['_source']
+        tweet['_score'] = tweet['_score'] / tweet_source["Irrelevance"]
         tweet_source['Date'] = tweet_source['Date'].replace('T', ' ')
 
-        extracted_result.append(tweet_source)
+    srt = sorted(result, key = lambda i: i['_score'], reverse=True)
+
+    for item in srt:
+        extracted_result.append(item['_source'])
 
     return extracted_result

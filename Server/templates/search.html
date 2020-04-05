@@ -5,20 +5,20 @@
 	<head>
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="static/css/bootstrap.min.css">
-	    <title>Basketball Tweets Search Engine</title>
+		<link rel="stylesheet" href="static/font-awesome-4.7.0/css/font-awesome.min.css">
+	    <title>Healthcare Tweets Search Engine</title>
 	</head>
 
 	<body>
 		<div class="container-fluid" style = "padding-top : 25px; width : 70%">
 			<ul class="nav nav-pills nav-justified">
-				<li class="nav-item	"><a class="nav-link active" href="#">Home</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Messages</a></li>
+				<li class="nav-item	"><a class="nav-link active" href="#">Search Engine</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Classification</a></li>
 			</ul>
 		</div>
 
 	    <div class="container center" style="padding : 25px; width : 70%">
-	    	<h1 class="text-center">Basketball Tweets Search Engine</h1>
+	    	<h1 class="text-center">Healthcare Tweets Search Engine</h1>
 	        <div class="row" style="margin-top: 25px">
 				<div class="input-group mb-3">
 					<input type="text" class="form-control" placeholder="Search...">
@@ -41,7 +41,7 @@
 	                            </div>
 	                        </div>
 	                        <p style="font-size : 1.5em">
-	                            This is the tweet
+	                            This is the default tweet
 	                        </p>
 	                    </div>
 	                </div>
@@ -60,7 +60,6 @@
 											})
 										})
         		var listItemGenerator = function(key, data) {
-        			console.log(data);
         			htmlContent = `
 		        		<li class="list-group-item">
 			                <div class="row">
@@ -75,6 +74,7 @@
 			                            ${data.TweetText}
 			                        </p>
 			                    </div>
+								<i onclick="dislike(this, ${key})" class="fa fa-thumbs-down"></i>
 			                </div>
 			            </li>
 			        `;
@@ -90,10 +90,44 @@
 			    	else
 				     	for(let key in dataSet)
 				     		$(".list-group").append(listItemGenerator(key, dataSet[key]));
-			     }
+			    }
+		</script>
 
-        		
+		<script>
+			clicked = new Array(15);
+			size = 15;
+			while(size--){
+				clicked[size] = false;
+			}
 
-        </script>
+			function dislike(x, key) {
+				clicked[parseInt(key)] = !clicked[parseInt(key)];
+				var color = clicked[parseInt(key)] ? 'blue' : 'black';
+				x.style.color = color;
+				console.log(clicked[parseInt(key)]);
+				$.ajax({
+							type : 'POST',
+							url : '/feedback',
+							data: {'key': key},
+							success : function(data){
+								return data.key;
+							}
+
+						})
+			}
+		</script>
+
+		<style>
+			.fa {
+				text-align: center;
+				font-size: 45px;
+				cursor: pointer;
+				user-select: none;
+			}
+			
+			.fa:hover {
+				color: darkblue;
+			}
+		</style>
 	</body>
 </html>
