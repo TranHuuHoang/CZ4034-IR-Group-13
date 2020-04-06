@@ -12,13 +12,23 @@
 
 ## Instruction to run
 
-- Start elasticsearch server
+- Start elasticsearch server (If you used Linux machine)
 
   - cd to the project directory
 
   - Run `chmod +x elasticsearch.sh`
 
   - Run `./elasticsearch.sh`
+
+- If you are not using Linux, please download elasticsearch from the link below
+
+  `https://www.elastic.co/downloads/elasticsearch`
+
+  - Unzip the file to a favorite folder, and navigate to that folder
+
+  - For Window, run: `.\bin\elasticsearch.bat`
+
+  - For MacOS, run: `bin/elasticsearch`
 
 - Setup web server
 
