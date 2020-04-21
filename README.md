@@ -8,7 +8,7 @@
 
 - Install dependencies
 
-  - `pip install numpy pandas flask requests elasticsearch`
+  - `pip install numpy pandas flask requests elasticsearch xlrd`
 
 ## Instruction to run
 
