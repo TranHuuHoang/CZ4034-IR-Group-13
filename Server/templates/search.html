@@ -52,6 +52,7 @@
 		<script src="static/js/jquery-3.4.1.min.js"></script>
 		<script src="static/js/bootstrap.min.js"></script>
         <script>$('.btn-primary').click(function(){
+        									console.log("Query sent to server");
 											$.ajax({
 												type : 'GET',
 												url : '/ajax',
@@ -59,6 +60,15 @@
 												success : (dataSet) => populateList(dataSet)
 											})
 										})
+
+        		$("input").keypress(function (event){
+        			if (event.which == 13){
+        				event.preventDefault;
+        				$('.btn-primary').click()
+        			}
+        			
+        		})
+
         		var listItemGenerator = function(key, data) {
         			htmlContent = `
 		        		<li class="list-group-item">
